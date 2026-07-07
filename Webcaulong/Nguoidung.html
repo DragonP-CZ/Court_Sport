@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Court Sport - Đỉnh Cao Thể Thao</title>
+    <link rel="icon" href="loogo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="Nguoidung.css" />
+    <script src="Nguoidung.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div id="welcome-popup" class="glass-popup">
+      <div class="popup-content">
+        <h2 style="color: var(--neon-volt); margin-bottom: 10px">
+          Chào Mừng Đến Court Sport!
+        </h2>
+        <p style="margin-bottom: 20px; color: var(--text-muted)">
+          Trải nghiệm nền tảng đặt sân đẳng cấp nhì hiện nay.
+        </p>
+        <p style="margin-bottom: 20px">
+          THÔNG BÁO: Bảo trì sân 3 từ 12h-13h59 hằng ngày.
+        </p>
+        <button id="close-popup" class="btn-neon">Bắt đầu ngay</button>
+      </div>
+    </div>
+
+    <div id="sidebar-menu" class="sidebar">
+      <button
+        id="close-sidebar"
+        class="btn-text"
+        style="font-size: 24px; color: var(--neon-volt); z-index: 10"
+      >
+        &times; Thoát
+      </button>
+
+      <div class="sidebar-layout">
+        <div class="sidebar-top">
+          <a
+            href="#"
+            id="sidebar-profile-link"
+            class="guest-profile"
+            style="text-decoration: none"
+          >
+            <div class="guest-avatar" style="overflow: hidden">
+              <i class="fa-solid fa-user" id="default-avatar-icon"></i>
+              <img
+                id="user-avatar-sidebar"
+                src="https://maubanhkem.com/wp-content/uploads/2025/08/anh-con-bo-ngoi-may-tinh-10.jpg"
+                alt="Avatar"
+                style="
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                  display: none;
+                "
+              />
+            </div>
+            <div class="guest-name" id="user-name-sidebar">Khách</div>
+          </a>
+        </div>
+
+        <div class="sidebar-middle">
+          <nav class="sidebar-links">
+            <a href="#" id="sidebar-login" class="guest-only"
+              >Đăng nhập/Đăng ký</a
+            >
+            <a href="Nguoidung.html">Trang Chủ</a>
+            <a
+              href="ThanhtoanvaKhuyenmai.html"
+              class="member-only"
+              style="display: none"
+              >Lịch sử giao dịch và tích điểm</a
+            >
+            <a href="Thongtinchung.html?section=cuocthi">Cuộc Thi</a>
+            <a href="Thongtinchung.html?section=doitac">Đối tác & Chúng tôi</a>
+            <a href="Thongtinchung.html?section=danhsachsan&mon=bongda"
+              >Sân Bóng Đá</a
+            >
+            <a href="Thongtinchung.html?section=danhsachsan&mon=caulong"
+              >Sân Cầu Lông</a
+            >
+            <a href="Caidatchung.html" class="member-only" style="display: none"
+              >Setting</a
+            >
+            <a
+              href="#"
+              id="sidebar-logout"
+              class="member-only"
+              style="display: none; color: #ff003c"
+              >Đăng xuất</a
+            >
+          </nav>
+        </div>
+
+        <div class="sidebar-bottom">
+          <div class="sidebar-logo-large">
+            <img src="loogo.png" alt="Court Sport Logo" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <header class="navbar-unified" id="navbar">
+      <div class="nav-left">
+        <button id="btn-menu" class="icon-btn" title="Mở Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="brand-group" id="brand-trigger">
+          <div class="logo-circle">
+            <img src="loogo.jpg" alt="Court Sport Logo" />
+          </div>
+          <div class="brand-text-group">
+            <div class="web-name">COURT SPORT</div>
+            <div class="web-slogan">Tròn nhịp bóng, Căng nhịp cầu</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-center">
+        <div style="display: flex; align-items: center; gap: 10px">
+          <div class="search-oval">
+            <input
+              type="text"
+              id="global-search-input"
+              placeholder="Tìm kiếm (VD: Đặt sân, Bóng đá...)"
+            />
+            <button id="global-search-btn">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+          <button
+            id="theme-toggle"
+            class="icon-btn"
+            title="Đổi giao diện Sáng/Tối"
+          >
+            <i class="fa-solid fa-moon"></i>
+          </button>
+        </div>
+        <div class="nav-links-group">
+          <!-- <button
+            id="btn-clbd"
+            class="nav-btn i18n"
+            data-vi="Sân Bóng đá/Cầu lông"
+            data-en="Football/Badminton"
+          >
+            Sân Bóng đá/Cầu lông
+          </button> -->
+          <button
+            id="btn-datsan"
+            class="nav-btn i18n"
+            data-vi="Đặt sân"
+            data-en="Book Court"
+          >
+            Đặt sân
+          </button>
+          <button
+            id="btn-hotro"
+            class="nav-btn i18n"
+            data-vi="Hỗ trợ"
+            data-en="Support"
+          >
+            Hỗ trợ
+          </button>
+        </div>
+      </div>
+
+      <div class="nav-right">
+        <button id="lang-btn" class="btn-outline-neon lang-selector">
+          Tiếng Việt
+        </button>
+        <button
+          id="btn-login"
+          class="btn-neon i18n guest-only"
+          data-vi="Đăng nhập"
+          data-en="Login"
+        >
+          Đăng nhập
+        </button>
+        <a
+          href="#"
+          id="btn-member-nav"
+          class="btn-outline-neon member-only"
+          style="padding: 5px 15px; text-decoration: none; display: none"
+        >
+          <img
+            id="user-avatar-nav"
+            src="https://maubanhkem.com/wp-content/uploads/2025/08/anh-con-bo-ngoi-may-tinh-10.jpg"
+            alt="Avatar"
+            style="
+              width: 28px;
+              height: 28px;
+              border-radius: 50%;
+              object-fit: cover;
+            "
+          />
+          <span id="user-name-nav" style="margin-left: 8px">Thành viên</span>
+        </a>
+      </div>
+    </header>
+
+    <section class="slider-section" id="booking-section">
+      <div class="slider-container">
+        <div
+          class="slide active"
+          style="
+            background-image: url(&quot;https://sukavietnam.com/wp-content/uploads/2022/04/Ban-tham-san-bong-futsal.webp&quot;);
+          "
+        ></div>
+        <div
+          class="slide"
+          style="
+            background-image: url(&quot;https://cdn.shopvnb.com/uploads/images/tin_tuc/san-cau-long-cau-giay-1-1687825751.webp&quot;);
+          "
+        ></div>
+        <div class="overlay"></div>
+      </div>
+      <button id="btn-prev" class="slider-arrow left">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button id="btn-next" class="slider-arrow right">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+      <section class="slider-section" id="booking-section">
+        <div class="slider-overlay-content">
+          <div class="slider-center-content">
+            <h2 class="glitch-text">COURT SPORT</h2>
+            <p>Tròn nhịp bóng, Căng nhịp cầu</p>
+          </div>
+          <button id="btn-book-now" class="btn-neon static-book-btn">
+            ĐẶT SÂN NGAY
+          </button>
+        </div>
+      </section>
+    </section>
+    <!-- 
+    <section class="categories" id="clbd-section">
+      <div class="cat-card football-card">
+        <h2>HƠN 30 SÂN BÓNG ĐÁ TRÊN TOÀN QUỐC</h2>
+       <a
+          href="Thongtinchung.html?section=filter&mon=bongda"
+          class="btn-outline-neon"
+        >
+          Xem Sân Ngay <i class="fa-solid fa-arrow-right"></i>
+        </a> 
+      </div>
+      <div class="cat-card badminton-card">
+        <h2>HƠN 25 SÂN CẦU LÔNG TRÊN TOÀN QUỐC</h2>
+         <button class="btn-outline-neon">
+          <a href="Thongtinchung.html?section=filter&mon=caulong">
+            Xem Sân Ngay <i class="fa-solid fa-arrow-right"></i
+          ></a>
+        </button> 
+      </div>
+    </section> -->
+    <!-- 
+    <section class="parallax-banner">
+      <div class="overlay-parallax"></div>
+      <div class="parallax-content">
+        <h2 class="glitch-text">COURT SPORT</h2>
+        <p>Tròn nhịp bóng, Căng nhịp cầu</p>
+      </div>
+    </section> -->
+
+    <div id="login-modal" class="glass-popup" style="display: none">
+      <div class="popup-content" style="width: 400px; max-width: 90%">
+        <h2 style="color: var(--neon-volt); margin-bottom: 25px">Đăng Nhập</h2>
+
+        <div style="text-align: left; margin-bottom: 15px">
+          <label
+            style="
+              color: var(--text-main);
+              font-size: 14px;
+              margin-bottom: 5px;
+              display: block;
+              font-weight: bold;
+            "
+          >
+            Tên đăng nhập:
+          </label>
+          <input
+            type="text"
+            id="login-username"
+            class="neon-input"
+            style="width: 100%; padding: 12px"
+            placeholder="Nhập tên đăng nhập"
+          />
+        </div>
+
+        <div style="text-align: left; margin-bottom: 30px">
+          <label
+            style="
+              color: var(--text-main);
+              font-size: 14px;
+              margin-bottom: 5px;
+              display: block;
+              font-weight: bold;
+            "
+          >
+            Mật khẩu:
+          </label>
+          <input
+            type="password"
+            id="login-password"
+            class="neon-input"
+            style="width: 100%; padding: 12px"
+            placeholder="Nhập mật khẩu"
+          />
+        </div>
+
+        <div style="text-align: center; margin-bottom: 20px">
+          <button
+            id="submit-login-btn"
+            class="btn-neon"
+            style="width: 100%; font-size: 16px"
+          >
+            Đăng nhập
+          </button>
+        </div>
+
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            border-top: 1px dashed var(--glass-border);
+            padding-top: 15px;
+          "
+        >
+          <a
+            href="#"
+            id="btn-forgot-pw"
+            class="neon-text"
+            style="font-style: italic"
+            >Quên mật khẩu?</a
+          >
+          <a href="#" id="btn-show-register" class="neon-text"
+            >Bạn chưa có tài khoản? Đăng ký</a
+          >
+        </div>
+
+        <button
+          id="close-login-modal"
+          class="btn-text"
+          style="margin-top: 25px"
+        >
+          &times; Hủy bỏ
+        </button>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-middle">
+          <ul class="footer-address-list">
+            <li>Chi nhánh 1: 737 Nguyễn Trãi, Tân Liêu</li>
+            <li>Chi nhánh 2: 221 Hai Ly, Nguyễn Văn Linh, Quận Cam</li>
+            <li>Chi nhánh 3: 8386 An Nhàn, Trung Đông, Ba Vì</li>
+            <li>Chi nhánh 4: 2925 Hoàng Ngô Thắm, Tường Ba, Hai Lao</li>
+            <li>Chi nhánh 5: 2323 Ngọc Hoàng, Tiến Công, Ba Vì</li>
+          </ul>
+          <div class="footer-contact">
+            <div class="contact-item">
+              <span class="label">Hotline(Anh Long):</span>
+              <a href="tel:0909000001" class="neon-text">0909000001 </a>
+            </div>
+            <div class="contact-item">
+              <span class="label">Mail:</span>
+              <a href="mailto:hotro@courtsport.com" class="neon-text"
+                >hotro@courtsport.com</a
+              >
+            </div>
+          </div>
+          <div class="footer-support">
+            <a href="Caidatchung.html">Hỗ trợ - Góp ý</a>
+          </div>
+        </div>
+        <div class="footer-right">
+          <h3 class="social-title">Mạng xã hội</h3>
+          <div class="social-grid">
+            <a href="#" class="social-btn"
+              ><i class="fa-solid fa-comment-dots"></i> Zalo</a
+            >
+            <a href="#" class="social-btn"
+              ><img
+                src="https://w7.pngwing.com/pngs/22/444/png-transparent-messenger-facebook-messenger-messenger-logo-social-media-icon-thumbnail.png"
+                alt="Messenger"
+                class="custom-icon"
+              />Messenger</a
+            >
+            <a href="#" class="social-btn"
+              ><i class="fa-brands fa-facebook"></i> Facebook</a
+            >
+            <a href="#" class="social-btn"
+              ><i class="fa-brands fa-instagram"></i> Instagram</a
+            >
+            <a href="#" class="social-btn">
+              <img
+                src="https://img.magnific.com/vector-premium/threads-logo-vector-eps-svg-ai-descarga-gratuita-threads-aplicacion-logotipo-logotipo-threads-instagram-meta_691560-10840.jpg"
+                alt="Threads"
+                class="custom-icon"
+              />
+              Thread
+            </a>
+            <a href="#" class="social-btn"
+              ><i class="fa-brands fa-telegram"></i> Telegram</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom-bar">
+        <p>&copy; 2026 Court Sport. Sản phẩm của nhóm 4AN1PM.</p>
+      </div>
+    </footer>
+
+    <div id="chat-widget-container">
+      <button id="chat-toggle" class="chat-btn">
+        <i class="fa-solid fa-comments"></i>
+      </button>
+
+      <div id="chat-window" class="chat-window" style="display: none">
+        <div class="chat-header">
+          <span>Court Sport Bot</span>
+          <button id="chat-close" class="btn-text">&times;</button>
+        </div>
+        <div id="chat-messages" class="chat-messages">
+          <div class="bot-msg">Chào bạn! Mình có thể giúp gì cho bạn?</div>
+        </div>
+        <div class="chat-input-area">
+          <input type="text" id="user-input" placeholder="Nhập câu hỏi..." />
+          <button id="send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

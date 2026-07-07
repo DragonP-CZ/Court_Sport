@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Court Sport - Cài Đặt, Hỗ Trợ</title>
+    <link rel="icon" href="loogo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="Nguoidung.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      .settings-container {
+        max-width: 800px;
+        margin: 100px auto 40px;
+        padding: 20px;
+      }
+      .settings-card {
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        border-radius: 12px;
+        padding: 30px;
+        margin-bottom: 30px;
+        backdrop-filter: blur(10px);
+      }
+      .avatar-edit-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 30px;
+        padding-bottom: 25px;
+        border-bottom: 1px dashed var(--glass-border);
+      }
+      .preview-avatar-circle {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--neon-volt);
+        box-shadow: 0 0 15px rgba(204, 255, 0, 0.3);
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      .form-group label {
+        display: block;
+        color: var(--text-main);
+        font-weight: 600;
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+      .form-control {
+        width: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid var(--glass-border);
+        border-radius: 6px;
+        padding: 12px 15px;
+        color: var(--text-main);
+        font-size: 15px;
+        transition: border-color 0.3s ease;
+      }
+      .form-control:focus {
+        border-color: var(--neon-volt);
+        outline: none;
+      }
+      .support-accordion {
+        margin-top: 20px;
+      }
+      .faq-item {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--glass-border);
+        border-radius: 6px;
+        margin-bottom: 10px;
+        overflow: hidden;
+      }
+      .faq-question {
+        padding: 15px;
+        font-weight: bold;
+        color: var(--text-main);
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.01);
+      }
+      .faq-question:hover {
+        color: var(--neon-volt);
+      }
+      .faq-answer {
+        padding: 0 15px;
+        max-height: 0;
+        overflow: hidden;
+        color: var(--text-muted);
+        font-size: 14px;
+        line-height: 1.6;
+        transition:
+          padding 0.3s ease,
+          max-height 0.3s ease;
+      }
+      .faq-item.active .faq-answer {
+        padding: 15px;
+        max-height: 200px;
+        border-top: 1px solid var(--glass-border);
+      }
+      .faq-item.active .fa-chevron-down {
+        transform: rotate(180px);
+      }
+      .fa-chevron-down {
+        transition: transform 0.3s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <header
+      style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: var(--bg-darker);
+        border-bottom: 1px solid var(--glass-border);
+        padding: 15px 20px;
+        z-index: 100;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      "
+    >
+      <div style="display: flex; align-items: center; gap: 10px">
+        <span
+          style="
+            color: var(--neon-volt);
+            font-weight: bold;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+          "
+          >COURT SPORT</span
+        >
+      </div>
+      <nav style="display: flex; gap: 15px; align-items: center">
+        <a href="Nguoidung.html" class="btn-text"
+          ><i class="fa-solid fa-arrow-left"></i> Trang Chủ</a
+        >
+        <a
+          href="Datsan.html"
+          class="btn-neon"
+          style="padding: 6px 15px; font-size: 14px"
+          >ĐẶT SÂN</a
+        >
+      </nav>
+    </header>
+
+    <main class="settings-container">
+      <section class="settings-card">
+        <h2 style="color: var(--neon-volt); margin-bottom: 25px">
+          <i class="fa-solid fa-user-gear"></i> Thiết Lập Tài Khoản
+        </h2>
+
+        <form id="profile-settings-form">
+          <div class="avatar-edit-section">
+            <img
+              id="avatar-preview"
+              src=""
+              alt="Avatar"
+              class="preview-avatar-circle"
+            />
+            <div style="width: 100%; max-width: 400px">
+              <label
+                style="
+                  display: block;
+                  text-align: center;
+                  font-size: 13px;
+                  margin-bottom: 5px;
+                  color: var(--text-muted);
+                "
+                >Liên kết URL hình ảnh Avatar mới:</label
+              >
+              <input
+                type="text"
+                id="input-avatar-url"
+                class="form-control"
+                placeholder="Dán link ảnh (https://...) tại đây"
+              />
+            </div>
+            <button
+              type="button"
+              id="btn-preview-avatar"
+              class="btn-text"
+              style="font-size: 13px; color: var(--neon-volt)"
+            >
+              [ Xem trước ảnh ]
+            </button>
+          </div>
+
+          <div class="form-group">
+            <label for="input-username">Họ và Tên</label>
+            <input
+              type="text"
+              id="input-username"
+              class="form-control"
+              required
+              placeholder="Nhập họ và tên đầy đủ"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="input-email">Địa chỉ Email</label>
+            <input
+              type="email"
+              id="input-email"
+              class="form-control"
+              required
+              placeholder="name@example.com"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="input-password"
+              >Mật khẩu mới (Để trống nếu không muốn đổi)</label
+            >
+            <input
+              type="password"
+              id="input-password"
+              class="form-control"
+              placeholder="Nhập mật khẩu mới bảo mật"
+            />
+          </div>
+
+          <div style="display: flex; gap: 15px; margin-top: 30px">
+            <button
+              type="submit"
+              class="btn-neon"
+              style="flex: 1; padding: 12px; font-weight: bold; font-size: 15px"
+            >
+              <i class="fa-solid fa-floppy-disk"></i> LƯU THAY ĐỔI
+            </button>
+            <button
+              type="button"
+              onclick="window.location.href = 'Nguoidung.html'"
+              class="form-control"
+              style="width: 120px; cursor: pointer"
+            >
+              Hủy bỏ
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section class="settings-card">
+        <h3 style="color: var(--neon-volt); margin-bottom: 10px">
+          <i class="fa-solid fa-circle-info"></i> Trung Tâm Trợ Giúp & FAQ
+        </h3>
+        <p
+          style="color: var(--text-muted); font-size: 14px; margin-bottom: 15px"
+        >
+          Giải đáp nhanh các thắc mắc chung về hệ thống quản lý đặt sân Court
+          Sport.
+        </p>
+
+        <div class="support-accordion">
+          <div class="faq-item">
+            <div class="faq-question">
+              Làm sao để hủy lịch đặt sân và hoàn tiền?
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              Bạn có thể thực hiện hủy sân tại trang cá nhân ở mục "Quản lý sân
+              của bạn". Theo quy định, nếu hủy trước giờ bắt đầu thi đấu 6
+              tiếng, bạn sẽ được hoàn 100% tiền vào ví hoặc tài khoản tích điểm.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              Điểm tích lũy thành viên dùng để làm gì?
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              Mỗi lượt đặt sân thành công sẽ tích lũy 5% giá trị hóa đơn thành
+              điểm thưởng. Điểm này có thể trực tiếp quy đổi thành voucher giảm
+              giá hoặc trừ trực tiếp vào tiền thuê sân ở những lần tiếp theo.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              Tôi muốn khiếu nại chất lượng thảm hoặc ánh sáng?
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              Mọi vấn đề về cơ sở vật chất, quý khách vui lòng liên hệ ngay
+              hotline khẩn cấp
+              <span style="color: var(--neon-volt)">0909000001</span> hoặc liên
+              hệ trục tiếp quản lý sân vận động chi nhánh để được hỗ trợ nhanh
+              nhất.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              Cần góp ý và các vấn đề khác?
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p style="margin-bottom: 15px">
+                Mọi thắc mắc chưa được giải đáp hoặc có ý kiến đóng góp, bạn có
+                thể lựa chọn các kênh liên hệ sau:
+              </p>
+              <div style="display: flex; gap: 15px; flex-wrap: wrap">
+                <a
+                  href="mailto:hotro@courtsport.com"
+                  class="btn-outline-neon"
+                  style="text-decoration: none; font-size: 14px"
+                >
+                  <i class="fa-solid fa-envelope"></i> Gửi Gmail Hỗ Trợ
+                </a>
+
+                <button
+                  type="button"
+                  id="faq-chat-trigger"
+                  class="btn-neon"
+                  style="font-size: 14px"
+                >
+                  <i class="fa-solid fa-comments"></i> Chat Với Trợ Lý
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer
+      style="
+        text-align: center;
+        padding: 20px;
+        color: var(--text-muted);
+        font-size: 13px;
+        border-top: 1px solid var(--glass-border);
+      "
+    >
+      &copy; 2026 Court Sport Portal. Thiết kế đồng bộ bởi Đội ngũ kỹ thuật.
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // 1. Khởi tạo dữ liệu hiện tại từ localStorage lên Form nhập liệu
+        let currentRole = localStorage.getItem("userRole") || "guest";
+        let currentName = localStorage.getItem("userName") || "Khách";
+        let currentEmail =
+          localStorage.getItem("userEmail") || "chưa cập nhật@gmail.com";
+        let currentAvatar =
+          localStorage.getItem("userAvatar") ||
+          "https://maubanhkem.com/wp-content/uploads/2025/08/anh-con-bo-ngoi-may-tinh-10.jpg";
+
+        const avatarPreview = document.getElementById("avatar-preview");
+        const inputAvatarUrl = document.getElementById("input-avatar-url");
+        const inputUsername = document.getElementById("input-username");
+        const inputEmail = document.getElementById("input-email");
+        const inputPassword = document.getElementById("input-password");
+
+        avatarPreview.src = currentAvatar;
+        inputUsername.value = currentName;
+        inputEmail.value = currentEmail;
+
+        document
+          .getElementById("btn-preview-avatar")
+          .addEventListener("click", function () {
+            let url = inputAvatarUrl.value.trim();
+            if (url) {
+              avatarPreview.src = url;
+            } else {
+              alert("Vui lòng nhập đường dẫn URL hình ảnh để xem trước!");
+            }
+          });
+
+        document
+          .getElementById("profile-settings-form")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            localStorage.setItem("userName", inputUsername.value.trim());
+            localStorage.setItem("userEmail", inputEmail.value.trim());
+
+            if (inputAvatarUrl.value.trim() !== "") {
+              localStorage.setItem("userAvatar", inputAvatarUrl.value.trim());
+            }
+
+            if (inputPassword.value.trim() !== "") {
+              localStorage.setItem("userPassword", inputPassword.value.trim());
+              alert("Thay đổi thông tin và cập nhật mật khẩu thành công!");
+            } else {
+              alert("Cập nhật thông tin cá nhân thành công!");
+            }
+
+            window.location.href = "Nguoidung.html";
+          });
+
+        const faqQuestions = document.querySelectorAll(".faq-question");
+        faqQuestions.forEach((question) => {
+          question.addEventListener("click", function () {
+            const item = this.parentElement;
+            item.classList.toggle("active");
+          });
+        });
+
+        if (localStorage.getItem("theme") === "light") {
+          document.body.classList.add("light-theme");
+        }
+      });
+    </script>
+  </body>
+</html>

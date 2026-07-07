@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trang Quản Trị - Court Sport</title>
+    <link rel="icon" href="loogo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="Admin.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <aside class="admin-sidebar">
+      <div class="sidebar-brand">
+        <img src="loogo.jpg" alt="Logo" class="admin-logo-img" />
+        <div class="brand-text">
+          <h2>COURT SPORT</h2>
+          <span>Admin Portal</span>
+        </div>
+      </div>
+
+      <nav class="admin-nav">
+        <a href="#" class="nav-item active" data-target="dashboard-section">
+          <i class="fa-solid fa-chart-line"></i> Tổng quan
+        </a>
+        <a href="#" class="nav-item" data-target="court-section">
+          <i class="fa-solid fa-layer-group"></i> Quản lý Sân bãi
+        </a>
+        <a href="#" class="nav-item" data-target="order-section">
+          <i class="fa-solid fa-file-invoice-dollar"></i> Quản lý Đơn đặt
+        </a>
+        <a href="#" class="nav-item" data-target="revenue-section">
+          <i class="fa-solid fa-chart-pie"></i> Thống kê Doanh thu
+        </a>
+
+        <div class="nav-divider admin-only"></div>
+        <p class="nav-title admin-only">QUẢN TRỊ VIÊN</p>
+
+        <a href="#" class="nav-item admin-only" data-target="staff-section">
+          <i class="fa-solid fa-users"></i> Quản lý Nhân viên
+        </a>
+        <a href="#" class="nav-item admin-only" data-target="system-section">
+          <i class="fa-solid fa-gear"></i> Cài đặt Hệ thống
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button id="btn-logout" class="btn-outline-neon full-width">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất
+        </button>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-header">
+        <div class="header-left">
+          <h2 id="page-title">Tổng quan hệ thống</h2>
+        </div>
+        <div class="header-right">
+          <div class="admin-profile">
+            <img src="https://i.pravatar.cc/150?img=11" alt="Admin Avatar" />
+            <div class="profile-info">
+              <span class="admin-name" id="display-admin-name"
+                >Đang tải...</span
+              >
+              <span class="admin-role" id="display-admin-role">Role</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="content-wrapper">
+        <section id="dashboard-section" class="content-section active">
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon"><i class="fa-solid fa-wallet"></i></div>
+              <div class="stat-info">
+                <h3>Doanh thu hôm nay</h3>
+                <p class="neon-text">12,500,000 đ</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fa-solid fa-calendar-check"></i>
+              </div>
+              <div class="stat-info">
+                <h3>Đơn đặt sân mới</h3>
+                <p class="neon-text">42 Đơn</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon"><i class="fa-solid fa-futbol"></i></div>
+              <div class="stat-info">
+                <h3>Sân đang hoạt động</h3>
+                <p class="neon-text">15 / 18 Sân</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="recent-orders mt-30">
+            <h3>Đơn đặt gần đây</h3>
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Mã đơn</th>
+                  <th>Khách hàng</th>
+                  <th>Sân / Khung giờ</th>
+                  <th>Trạng thái</th>
+                  <th>Thao tác</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>#DH001</td>
+                  <td>Nguyễn Văn A</td>
+                  <td>Sân 1 (Quận 7) - 18:00</td>
+                  <td>
+                    <span class="badge badge-success">Đã thanh toán</span>
+                  </td>
+                  <td><button class="btn-text neon-text">Chi tiết</button></td>
+                </tr>
+                <tr>
+                  <td>#DH002</td>
+                  <td>Trần Thị B</td>
+                  <td>Sân 3 (Quận 5) - 19:30</td>
+                  <td>
+                    <span class="badge badge-warning">Chờ thanh toán</span>
+                  </td>
+                  <td><button class="btn-text neon-text">Chi tiết</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section
+          id="court-section"
+          class="content-section"
+          style="display: none"
+        >
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 20px;
+            "
+          >
+            <h3>Danh sách Sân Thể Thao</h3>
+            <button id="btn-add-court" class="btn-neon">
+              <i class="fa-solid fa-plus"></i> Thêm Sân Mới
+            </button>
+          </div>
+
+          <div style="overflow-x: auto">
+            <table class="admin-table" id="courts-table">
+              <thead>
+                <tr>
+                  <th>Mã Sân</th>
+                  <th>Chi nhánh</th>
+                  <th>Loại Sân</th>
+                  <th>Giá thường</th>
+                  <th>Giá Cuối tuần/Lễ</th>
+                  <th>Khuyến mãi</th>
+                  <th>Trạng thái</th>
+                  <th>Thao tác</th>
+                </tr>
+              </thead>
+              <tbody id="courts-table-body"></tbody>
+            </table>
+          </div>
+
+          <div
+            id="court-modal"
+            class="glass-popup"
+            style="display: none; z-index: 2000"
+          >
+            <div class="popup-content" style="width: 550px; text-align: left">
+              <h2
+                id="court-modal-title"
+                style="
+                  color: var(--neon-volt);
+                  margin-bottom: 20px;
+                  text-align: center;
+                "
+              >
+                Thêm Sân Mới
+              </h2>
+
+              <form id="court-form">
+                <input type="hidden" id="edit-court-uuid" />
+
+                <div style="margin-bottom: 15px; display: flex; gap: 15px">
+                  <div style="flex: 1">
+                    <label
+                      style="
+                        color: var(--text-main);
+                        font-weight: bold;
+                        margin-bottom: 5px;
+                        display: block;
+                      "
+                      >Mã / Tên Sân:</label
+                    >
+                    <input
+                      type="text"
+                      id="court-id"
+                      class="neon-input"
+                      style="width: 100%; padding: 10px"
+                      placeholder="VD: Sân 5"
+                      required
+                    />
+                  </div>
+                  <div style="flex: 1">
+                    <label
+                      style="
+                        color: var(--text-main);
+                        font-weight: bold;
+                        margin-bottom: 5px;
+                        display: block;
+                      "
+                      >Loại sân:</label
+                    >
+                    <select
+                      id="court-type"
+                      class="neon-input"
+                      style="width: 100%; padding: 10px"
+                    >
+                      <option value="Bóng đá">Bóng đá</option>
+                      <option value="Cầu lông">Cầu lông</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div style="margin-bottom: 15px; display: flex; gap: 15px">
+                  <div style="flex: 1">
+                    <label
+                      style="
+                        color: var(--text-main);
+                        font-weight: bold;
+                        margin-bottom: 5px;
+                        display: block;
+                      "
+                      >Quận / Huyện:</label
+                    >
+                    <select
+                      id="court-district"
+                      class="neon-input"
+                      style="width: 100%; padding: 10px"
+                    >
+                      <option value="Quận 1">Quận 1</option>
+                      <option value="Quận 5">Quận 5</option>
+                      <option value="Quận 7">Quận 7</option>
+                      <option value="Quận 11">Quận 11</option>
+                    </select>
+                  </div>
+                  <div style="flex: 1">
+                    <label
+                      style="
+                        color: var(--text-main);
+                        font-weight: bold;
+                        margin-bottom: 5px;
+                        display: block;
+                      "
+                      >Tên chi nhánh:</label
+                    >
+                    <input
+                      type="text"
+                      id="court-branch"
+                      class="neon-input"
+                      style="width: 100%; padding: 10px"
+                      placeholder="VD: Cơ sở Nguyễn Trãi"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div style="margin-bottom: 15px; display: flex; gap: 15px">
+                  <div style="flex: 1">
+                    <label
+                      style="
+                        color: var(--text-main);
+                        font-weight: bold;
+                        margin-bottom: 5px;
+                        display: block;
+                      "
+                      >Giá thường / Giờ:</label
+                    >
+                    <input
+                      type="number"
+                      id="court-price"
+                      class="neon-input"
+                      style="width: 100%; padding: 10px"
+                      placeholder="VD: 250000"
+                      required
+                    />
+                  </div>
+                  <div style="flex: 1">
+                    <label
+                      style="
+                        color: var(--text-main);
+                        font-weight: bold;
+                        margin-bottom: 5px;
+                        display: block;
+                      "
+                      >Giá Cuối tuần, Lễ:</label
+                    >
+                    <input
+                      type="number"
+                      id="court-holiday-price"
+                      class="neon-input"
+                      style="width: 100%; padding: 10px"
+                      placeholder="VD: 300000"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div style="margin-bottom: 25px; display: flex; gap: 15px">
+                  <div style="flex: 1">
+                    <label
+                      style="
+                        color: var(--text-main);
+                        font-weight: bold;
+                        margin-bottom: 5px;
+                        display: block;
+                      "
+                      >Khuyến mãi (%):</label
+                    >
+                    <input
+                      type="number"
+                      id="court-discount"
+                      class="neon-input"
+                      style="width: 100%; padding: 10px"
+                      placeholder="VD: 10"
+                      min="0"
+                      max="100"
+                    />
+                  </div>
+                  <div style="flex: 1">
+                    <label
+                      style="
+                        color: var(--text-main);
+                        font-weight: bold;
+                        margin-bottom: 5px;
+                        display: block;
+                      "
+                      >Trạng thái:</label
+                    >
+                    <select
+                      id="court-status"
+                      class="neon-input"
+                      style="width: 100%; padding: 10px"
+                    >
+                      <option value="Hoạt động">Hoạt động</option>
+                      <option value="Bảo trì">Bảo trì</option>
+                      <option value="Tạm đóng">Tạm đóng</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div style="display: flex; gap: 15px">
+                  <button type="submit" class="btn-neon full-width">
+                    Lưu dữ liệu
+                  </button>
+                  <button
+                    type="button"
+                    id="btn-close-court-modal"
+                    class="btn-outline-neon full-width"
+                  >
+                    Hủy bỏ
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="order-section"
+          class="content-section"
+          style="display: none"
+        >
+          <h3>Quản lý Đơn đặt sân (Đang cập nhật...)</h3>
+          <p>Khu vực duyệt đơn, hoàn tiền, hủy đơn.</p>
+        </section>
+
+        <section
+          id="revenue-section"
+          class="content-section"
+          style="display: none"
+        >
+          <h3>Thống kê Doanh thu (Đang cập nhật...)</h3>
+          <p>Biểu đồ doanh thu theo tuần/tháng/chi nhánh.</p>
+        </section>
+
+        <section
+          id="staff-section"
+          class="content-section admin-only"
+          style="display: none"
+        >
+          <h3>Quản lý Nhân viên / Phân quyền</h3>
+          <p>Chỉ Admin mới có thể xem trang này. Thêm mới Quản lý chi nhánh.</p>
+        </section>
+
+        <section
+          id="system-section"
+          class="content-section admin-only"
+          style="display: none"
+        >
+          <h3>Cài đặt Hệ thống</h3>
+          <p>Cấu hình giờ hoạt động chung, thông báo popup toàn hệ thống.</p>
+        </section>
+      </div>
+    </main>
+    <script src="Admin.js"></script>
+  </body>
+</html>

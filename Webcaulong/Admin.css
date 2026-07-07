@@ -1,0 +1,304 @@
+/* CSS DÀNH CHO TRANG QUẢN TRỊ (ADMIN DASHBOARD)*/
+
+:root {
+  --bg-dark: #0f172a;
+  --bg-darker: #020617;
+  --neon-volt: #ccff00;
+  --neon-hover: #a3cc00;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --sidebar-width: 260px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  display: flex;
+  min-height: 100vh;
+}
+
+.admin-sidebar {
+  width: var(--sidebar-width);
+  background-color: var(--bg-darker);
+  border-right: 1px solid var(--glass-border);
+  position: fixed;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-brand {
+  padding: 25px 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.admin-logo-img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid var(--neon-volt);
+  object-fit: cover;
+}
+
+.brand-text h2 {
+  font-size: 18px;
+  color: var(--neon-volt);
+  letter-spacing: 1px;
+}
+
+.brand-text span {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.admin-nav {
+  flex: 1;
+  padding: 20px 0;
+  overflow-y: auto;
+}
+
+.nav-title {
+  font-size: 12px;
+  color: var(--text-muted);
+  padding: 10px 20px;
+  margin-top: 15px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.nav-divider {
+  height: 1px;
+  background: var(--glass-border);
+  margin: 15px 20px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 20px;
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 15px;
+  transition: 0.3s;
+  border-left: 3px solid transparent;
+}
+
+.nav-item i {
+  font-size: 18px;
+  width: 25px;
+  text-align: center;
+  color: var(--text-muted);
+  transition: 0.3s;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  background: var(--glass-bg);
+  border-left-color: var(--neon-volt);
+  color: var(--neon-volt);
+}
+
+.nav-item:hover i,
+.nav-item.active i {
+  color: var(--neon-volt);
+}
+
+.sidebar-footer {
+  padding: 20px;
+  border-top: 1px solid var(--glass-border);
+}
+
+.admin-main {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  background-color: var(--bg-dark);
+}
+
+.admin-header {
+  height: 70px;
+  background: var(--bg-darker);
+  border-bottom: 1px solid var(--glass-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.admin-header h2 {
+  font-size: 20px;
+  color: var(--text-main);
+}
+
+.admin-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--neon-volt);
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-name {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.admin-role {
+  font-size: 12px;
+  color: var(--neon-volt);
+}
+
+.content-wrapper {
+  padding: 30px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.stat-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.stat-icon {
+  width: 60px;
+  height: 60px;
+  background: rgba(204, 255, 0, 0.1);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  color: var(--neon-volt);
+}
+
+.stat-info h3 {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 5px;
+}
+
+.stat-info p {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.neon-text {
+  color: var(--neon-volt);
+}
+.mt-30 {
+  margin-top: 30px;
+}
+
+.recent-orders h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--glass-bg);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.admin-table th {
+  background: var(--bg-darker);
+  color: var(--neon-volt);
+  font-weight: bold;
+}
+
+.admin-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.badge-success {
+  background: rgba(0, 255, 0, 0.1);
+  color: #00ff00;
+  border: 1px solid #00ff00;
+}
+
+.badge-warning {
+  background: rgba(255, 165, 0, 0.1);
+  color: orange;
+  border: 1px solid orange;
+}
+
+.btn-outline-neon {
+  background: transparent;
+  color: var(--neon-volt);
+  border: 1px solid var(--neon-volt);
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-outline-neon:hover {
+  background: var(--neon-volt);
+  color: #000;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.btn-text {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
