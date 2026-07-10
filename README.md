@@ -190,7 +190,7 @@ courtsport/ (Thư mục gốc của dự án trên IDE NetBeans)
     │   ├── AdminSecurityFilter.java → Bộ lọc an ninh gác cổng, chặn truy cập trái phép vào /admin/*
     │   ├── AuthController.java      → Xử lý logic đăng ký, đăng nhập và đăng xuất
     │   ├── BookingController.java   → Xử lý luồng dữ liệu tạo đơn đặt lịch và thanh toán
-│   ├── CheckFieldServlet.java   → Tiếp nhận yêu cầu AJAX quét trùng ca bận ngầm từ client
+    ├── CheckFieldServlet.java   → Tiếp nhận yêu cầu AJAX quét trùng ca bận ngầm từ client
     │   ├── FieldController.java
     │   ├── HomeController.java      → Đẩy danh sách sân hoạt động ra trang chủ index.jsp
     │   └── UserController.java
