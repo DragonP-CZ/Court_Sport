@@ -65,8 +65,7 @@ Hệ thống bao gồm **07 bảng dữ liệu** được thiết kế chuẩn h
 ### Sơ đồ Thực thể - Liên kết (ERD)
 Sơ đồ quan hệ thực tế giữa các bảng dữ liệu trong hệ thống:
 
-![Sơ đồ ERD]<img width="952" height="630" alt="anh" src="https://github.com/user-attachments/assets/82e08585-20ca-4041-8080-9004c8060494" />
-
+![Sơ đồ Cơ sở Dữ liệu ERD - Court Sport](https://github.com/user-attachments/assets/82e08585-20ca-4041-8080-9004c8060494)
 
 > **Quy Tắc Vàng (Real-time Validation):**
 > Hệ thống áp dụng ràng buộc duy nhất `CONSTRAINT uq_realtime_booking UNIQUE (field_id, booking_date, slot_id)`. Ràng buộc này đảm bảo tại một sân, vào một ca giờ của một ngày cụ thể, chỉ chấp nhận duy nhất một đơn đặt thành công.
@@ -138,9 +137,9 @@ Mở công cụ **MySQL Workbench**, thiết lập kết nối vào `Localhost` 
 ## 5. Khởi chạy và Kiểm thử chức năng toàn cục
 
 ### A. Kích hoạt Server
-* [cite_start]Nhấp chuột phải vào tên dự án chọn `Clean and Build` để dọn dẹp bộ nhớ đệm và biên dịch lại mã nguồn sạch[cite: 40].
-* [cite_start]Nhấn nút `Run` trên thanh công cụ[cite: 41].
-* [cite_start]Hệ thống máy chủ Tomcat sẽ tự động compile các Servlet và mở trình duyệt mặc định truy cập thẳng vào địa chỉ trang chủ: `http://localhost:808/web_04`[cite: 41].
+* Nhấp chuột phải vào tên dự án, chọn `Clean and Build` để dọn dẹp bộ nhớ đệm và biên dịch lại mã nguồn sạch.
+* Nhấn nút `Run` (biểu tượng hình tam giác màu xanh) trên thanh công cụ.
+* Hệ thống máy chủ Apache Tomcat sẽ tự động biên dịch (compile) các Servlet, triển khai ứng dụng và mở trình duyệt mặc định để truy cập thẳng vào địa chỉ trang chủ: `http://localhost:8080/web_04`
 ### B. Hệ thống tài khoản mặc định có trong sql
 
 **Mode: Chủ sân**
