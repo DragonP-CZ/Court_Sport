@@ -29,10 +29,17 @@ Hệ thống đánh giá đóng góp công việc nội bộ đạt sự đồng
 Hiện nay, phần lớn các cơ sở kinh doanh sân thể thao vẫn áp dụng hình thức quản lý thủ công hoặc qua điện thoại, dẫn đến việc nhầm lẫn lịch, mất thời gian và khó tra cứu thông tin. Website **Court Sport** ra đời nhằm cung cấp nền tảng trực tuyến giúp người dùng dễ dàng tìm kiếm, đặt sân, thanh toán theo thời gian thực và hỗ trợ các đơn vị quản lý vận hành kinh doanh hiệu quả.
 
 ### Đối Tượng Sử Dụng Hệ Thống
-1. **Khách hàng:** Đăng ký/đăng nhập, tìm kiếm sân trống, xem lịch, đặt sân và thanh toán.
-2. **Quản lý:** Quản lý sân thuộc chi nhánh, quản lý đơn đặt và theo dõi doanh thu chi nhánh.
-3. **Chủ kinh doanh:** Quản lý chuỗi chi nhánh, cấu hình giá, khung giờ, nhân viên và xem báo cáo tổng.
-4. **Quản trị viên (Admin):** Quản trị toàn bộ hệ thống, tài khoản và phân quyền người dùng.
+1. **Khách hàng** 
+2. **Quản lý** 
+3. **Chủ kinh doanh** 
+4. **Quản trị viên** 
+
+## Các chức năng chính
+* **Chức năng 1 (Đăng ký, Đăng nhập & Phân quyền):** Xác thực người dùng, bảo mật mật khẩu băm và phân quyền truy cập (Admin/User).
+* **Chức năng 2 (Quản lý sân đấu - CRUD):** Thêm mới, chỉnh sửa, xóa và cập nhật trạng thái vận hành (Hoạt động/Bảo trì) cho hệ thống sân bóng đá và cầu lông.
+* **Chức năng 3 (Đặt sân & Chống trùng lịch):** Khách hàng tra cứu ca trống, đặt lịch linh hoạt. Hệ thống áp dụng kỹ thuật Database Transaction và Row-level Lock để đảm bảo tuyệt đối không bị trùng lịch (Overbooking).
+* **Chức năng 4 (Quản lý đơn đặt & Thanh toán):** Giả lập cổng thanh toán đa phương thức. Admin có quyền theo dõi toàn bộ hóa đơn, phê duyệt hoặc hủy ca khẩn cấp.
+* **Chức năng 5 (Thống kê & Báo cáo):** Dashboard dành cho Admin hiển thị biểu đồ phân tích doanh thu, thống kê hiệu suất sân và top khách hàng VIP.
 
 ---
 
@@ -45,6 +52,7 @@ Hiện nay, phần lớn các cơ sở kinh doanh sân thể thao vẫn áp dụ
 ---
 
 ## Kiến Trúc Cơ Sở Dữ Liệu (`BookingFieldDB`)
+
 Hệ thống bao gồm **07 bảng dữ liệu** được thiết kế chuẩn hóa chặt chẽ:
 1. `roles`: Lưu trữ cấu hình vai trò hệ thống (ADMIN, USER...).
 2. `users`: Quản lý thông tin tài khoản, mật khẩu băm bảo mật và điểm thưởng (`reward_points`).
@@ -190,7 +198,7 @@ courtsport/ (Thư mục gốc của dự án trên IDE NetBeans)
     │   ├── AdminSecurityFilter.java → Bộ lọc an ninh gác cổng, chặn truy cập trái phép vào /admin/*
     │   ├── AuthController.java      → Xử lý logic đăng ký, đăng nhập và đăng xuất
     │   ├── BookingController.java   → Xử lý luồng dữ liệu tạo đơn đặt lịch và thanh toán
-    ├── CheckFieldServlet.java   → Tiếp nhận yêu cầu AJAX quét trùng ca bận ngầm từ client
+    │   ├── CheckFieldServlet.java   → Tiếp nhận yêu cầu AJAX quét trùng ca bận ngầm từ client
     │   ├── FieldController.java
     │   ├── HomeController.java      → Đẩy danh sách sân hoạt động ra trang chủ index.jsp
     │   └── UserController.java
@@ -212,3 +220,7 @@ courtsport/ (Thư mục gốc của dự án trên IDE NetBeans)
     │
     └── utils/               → Kết nối MYSQL
         └── DBConnection.java → Kết nối trực tiếp DBase
+
+```
+## 7. Video thuyết trình và demo
+* **Link xem video trình bày dự án:** [Xem Video Demo Đồ Án Court Sport Tại Đây](https://drive.google.com/file/d/1Pdl_apvmHJxQJrS-IBSJDIvketEn8Phj/view?usp=drive_link)
